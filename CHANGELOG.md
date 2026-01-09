@@ -1,3 +1,8 @@
+# [v1.1.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.0.0...v1.1.0) (2026-01-09)
+
+## ✨ New Features
+- [`ff79df7`](https://github.com/fredrkl/net-mtls-demo/commit/ff79df7)  Web API starting point
+
 # v1.0.0 (2026-01-09)
 
 ## ✨ New Features
