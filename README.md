@@ -10,3 +10,8 @@ and a client that connects to the server using its own certificate.
 We will use Vayapays staging environment for this demo application:
 
 - <https://api-gw.staging.vayapay.com>
+
+```bash
+curl -v --cert ./flytoget.crt --key ./flytoget.key \
+https://api-gw.staging.vayapay.com
+```
