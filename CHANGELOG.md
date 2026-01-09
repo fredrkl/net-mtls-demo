@@ -1,3 +1,8 @@
+# [v1.3.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.2.0...v1.3.0) (2026-01-09)
+
+## ✨ New Features
+- [`5cf015b`](https://github.com/fredrkl/net-mtls-demo/commit/5cf015b)  POST endpoint for testing
+
 # [v1.2.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.1.0...v1.2.0) (2026-01-09)
 
 ## ✨ New Features
