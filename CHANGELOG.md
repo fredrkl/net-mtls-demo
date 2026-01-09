@@ -1,3 +1,8 @@
+# [v1.2.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.1.0...v1.2.0) (2026-01-09)
+
+## ✨ New Features
+- [`94f0673`](https://github.com/fredrkl/net-mtls-demo/commit/94f0673)  Do not need https redirection testing locally
+
 # [v1.1.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.0.0...v1.1.0) (2026-01-09)
 
 ## ✨ New Features
