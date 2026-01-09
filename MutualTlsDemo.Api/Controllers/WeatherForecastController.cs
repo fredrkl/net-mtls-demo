@@ -22,4 +22,11 @@ public class WeatherForecastController : ControllerBase
         })
         .ToArray();
     }
+
+    [HttpPost]
+    public IActionResult Post()
+    {
+        // Demo: just return a success response
+        return Ok("POST request received.");
+    }
 }
