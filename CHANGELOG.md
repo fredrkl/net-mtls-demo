@@ -1,3 +1,8 @@
+# v1.0.0 (2026-01-09)
+
+## ✨ New Features
+- [`1415910`](https://github.com/fredrkl/net-mtls-demo/commit/1415910)  Init
+
 # [v1.3.0](https://github.com/fredrkl/template-base/compare/v1.2.0...v1.3.0) (2025-08-03)
 
 ## ✨ New Features
