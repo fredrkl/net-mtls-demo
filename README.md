@@ -12,7 +12,7 @@ We will use Vayapays staging environment for this demo application:
 - <https://api-gw.staging.vayapay.com>
 
 ```bash
-curl -v --cert ./company.crt --key ./company.key \
+curl -v --cert ./vayapay.crt --key ./company.key \
 https://api-gw.staging.vayapay.com
 ```
 
