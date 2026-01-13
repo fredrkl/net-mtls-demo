@@ -9,7 +9,7 @@ public class VayapayClient
 
     public async Task<string> GetDataAsync()
     {
-        var response = await _httpClient.GetAsync("https://api.vayapay.com/data");
+        var response = await _httpClient.GetAsync("/");
         //response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
     }
