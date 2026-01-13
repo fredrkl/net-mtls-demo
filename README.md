@@ -40,3 +40,10 @@ The extension method `AddHttpClient<T>` adds the IHttpClientFactory and related
 services to the IServiceCollection and configures a binding between the
 VayapayClient type and a named HttpClient. The client name will be set to the
 type name of `VayapayClient`.
+
+Calling `AddHttpClient<T>()` multiple times:
+
+1.Registers IHttpClientFactory once (first call)
+2.Adds a separate named configuration “bucket” per typed client
+3.Registers each typed client as transient, wired to call the shared factory
+  at runtime
