@@ -1,3 +1,8 @@
+# [v1.5.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.4.0...v1.5.0) (2026-01-13)
+
+## ✨ New Features
+- [`f85e758`](https://github.com/fredrkl/net-mtls-demo/commit/f85e758)  Using mTLS towards Vayapay
+
 # [v1.4.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.3.0...v1.4.0) (2026-01-12)
 
 ## ✨ New Features
