@@ -1,3 +1,8 @@
+# [v1.4.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.3.0...v1.4.0) (2026-01-12)
+
+## ✨ New Features
+- [`a8dcd7d`](https://github.com/fredrkl/net-mtls-demo/commit/a8dcd7d)  Vayapay client
+
 # [v1.3.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.2.0...v1.3.0) (2026-01-09)
 
 ## ✨ New Features
