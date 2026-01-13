@@ -1,3 +1,8 @@
+# [v1.6.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.5.0...v1.6.0) (2026-01-13)
+
+## ✨ New Features
+- [`fdb9a3e`](https://github.com/fredrkl/net-mtls-demo/commit/fdb9a3e)  Using vayapay staging
+
 # [v1.5.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.4.0...v1.5.0) (2026-01-13)
 
 ## ✨ New Features
