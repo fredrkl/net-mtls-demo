@@ -6,27 +6,36 @@ namespace MutualTlsDemo.Api.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
-    private static readonly string[] Summaries =
-    [
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    ];
+  private readonly VayapayClient _vayapayClient;
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
-    {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
-    }
+  public WeatherForecastController(VayapayClient vayapayClient)
+  {
+    _vayapayClient = vayapayClient;
+  }
+  private static readonly string[] Summaries =
+  [
+      "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+  ];
 
-    [HttpPost]
-    public IActionResult Post()
-    {
-        // Demo: just return a success response
-        return Ok("POST request received.");
-    }
+  [HttpGet(Name = "GetWeatherForecast")]
+  public IEnumerable<WeatherForecast> Get()
+  {
+      return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+      {
+          Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
+          TemperatureC = Random.Shared.Next(-20, 55),
+          Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+      })
+      .ToArray();
+  }
+
+  [HttpPost]
+  public async Task<IActionResult> PostAsync()
+  {
+    var result = await _vayapayClient.GetDataAsync(); // Example usage of the injected HttpClient
+    Console.WriteLine("Response from Vayapay API:");
+    Console.WriteLine(result);
+
+    return Ok("POST request received.");
+  }
 }
