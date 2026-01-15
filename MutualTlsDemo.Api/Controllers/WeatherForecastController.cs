@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MutualTlsDemo.Api.Controllers;
@@ -12,12 +13,14 @@ public class WeatherForecastController : ControllerBase
   {
     _vayapayClient = vayapayClient;
   }
+
   private static readonly string[] Summaries =
   [
       "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
   ];
 
   [HttpGet(Name = "GetWeatherForecast")]
+  [Authorize(AuthenticationSchemes = "ApiKey")]
   public IEnumerable<WeatherForecast> Get()
   {
       return Enumerable.Range(1, 5).Select(index => new WeatherForecast

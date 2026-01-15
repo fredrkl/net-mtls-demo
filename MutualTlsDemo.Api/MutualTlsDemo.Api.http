@@ -1,8 +1,9 @@
 @MutualTlsDemo.Api_HostAddress = http://localhost:5171
+@ApiKey = supersecret
+
+GET {{MutualTlsDemo.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+X-API-KEY: {{ApiKey}}
 
 POST {{MutualTlsDemo.Api_HostAddress}}/weatherforecast
-Accept: application/json
-
-###
-GET {{MutualTlsDemo.Api_HostAddress}}/weatherforecast/
 Accept: application/json
