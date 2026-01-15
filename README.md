@@ -16,6 +16,20 @@ curl -v --cert ./vayapay.crt --key ./company.key \
 https://api-gw.staging.vayapay.com
 ```
 
+## Notes on the `X-API-KEY` Authentication
+
+Vayapay uses an API key-based authentication mechanism to secure calls to
+`Merchant APIs`. We can implement this in mulitple ways:
+
+1. Using customer Middleware to validate the API key on incoming requests.
+   Brittle path based logic.
+2. AuthenticationHandler to validate the API key on incoming requests.
+3. Using IEndpointFilter to validate the API key on incoming requests. Cleaner
+   and more modular.
+
+This is implemented in our API using IEndpointFilter to intercept incoming
+requests and validate the presence and correctness of the `X-API-KEY` header.
+
 ## Notes on `AddHttpClient<T>`
 
 In our Program.cs file, you may notice the following line of code:
@@ -27,8 +41,8 @@ builder.Services.AddHttpClient<VayapayClient>(config => {
 ```
 
 The `.AddHttpClient<T>` is an extension method provided by the
-`Microsoft.Extensions.Http` nuget package that extends the ServiceCollection in
-the `Microsoft.Extensions.DependencyInjection` namespace.
+`Microsoft.Extensions.Http` nuget package that extends the `ServiceCollection`
+in the `Microsoft.Extensions.DependencyInjection` namespace.
 
 `Microsoft.Extensions.Http` provides a managed, DependencyInjection-integrated,
 resilient way to create and use HttpClient instances. At the core is the
@@ -43,7 +57,7 @@ type name of `VayapayClient`.
 
 Calling `AddHttpClient<T>()` multiple times:
 
-1.Registers IHttpClientFactory once (first call)
-2.Adds a separate named configuration “bucket” per typed client
-3.Registers each typed client as transient, wired to call the shared factory
+1. Registers IHttpClientFactory once (first call)
+2. Adds a separate named configuration “bucket” per typed client
+3. Registers each typed client as transient, wired to call the shared factory
   at runtime
