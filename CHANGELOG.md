@@ -1,3 +1,8 @@
+# [v1.8.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.7.0...v1.8.0) (2026-01-16)
+
+## ✨ New Features
+- [`34d9d6b`](https://github.com/fredrkl/net-mtls-demo/commit/34d9d6b)  Authentication handler
+
 # [v1.7.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.6.0...v1.7.0) (2026-01-15)
 
 ## ✨ New Features
