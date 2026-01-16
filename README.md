@@ -1,9 +1,8 @@
 # mTLS Demo Application
 
 This is a simple demo application that showcases mutual TLS (mTLS)
-authentication between a client and a server. The application consists of a
-server that requires clients to present valid certificates for authentication,
-and a client that connects to the server using its own certificate.
+authentication between a client and a server. The application also shows how to
+setup HEADER based authentication.
 
 ## Vayapay
 
@@ -21,14 +20,37 @@ https://api-gw.staging.vayapay.com
 Vayapay uses an API key-based authentication mechanism to secure calls to
 `Merchant APIs`. We can implement this in mulitple ways:
 
-1. Using customer Middleware to validate the API key on incoming requests.
+1. AuthenticationHandler to validate the API key on incoming requests.
+2. Using customer Middleware to validate the API key on incoming requests.
    Brittle path based logic.
-2. AuthenticationHandler to validate the API key on incoming requests.
-3. Using IEndpointFilter to validate the API key on incoming requests. Cleaner
-   and more modular.
+3. Using IEndpointFilter to validate the API key on incoming requests.
 
 This is implemented in our API using IEndpointFilter to intercept incoming
 requests and validate the presence and correctness of the `X-API-KEY` header.
+
+### AuthenticationHandler Approach
+
+Gives me more control over the authentication process and allows me to leverage
+built-in ASP.NET Core authentication and authorization features.
+
+```markdown
+Request
+ ↓
+UseAuthentication
+   (no auth yet)
+ ↓
+UseAuthorization
+   ↓
+   [Authorize] attribute
+      ↓
+      Which scheme?
+         → none specified
+         → use DefaultScheme = "ApiKey"
+      ↓
+      AuthenticationService.AuthenticateAsync("ApiKey")
+      ↓
+      VayapayAuthenticationHandler.HandleAuthenticateAsync()
+```
 
 ## Notes on `AddHttpClient<T>`
 
