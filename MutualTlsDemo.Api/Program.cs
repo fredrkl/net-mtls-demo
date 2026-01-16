@@ -11,14 +11,16 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = VayapayAuthenticationHandlerScheme.AuthenticationScheme;})
+builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = VayapayAuthenticationHandlerScheme.AuthenticationScheme; })
                 .AddScheme<VayapayAuthenticationSchemeOptions, VayapayAuthenticationHandler>(VayapayAuthenticationHandlerScheme.AuthenticationScheme, x => { x.ApiKey = "supersecret"; });
 
-builder.Services.AddHttpClient<VayapayClient>((sp, client) => {
+builder.Services.AddHttpClient<VayapayClient>((sp, client) =>
+{
     var config = sp.GetRequiredService<IConfiguration>();
     Uri theuri = new(config["Vayapay:BaseUrl"]!);
     client.BaseAddress = theuri;
-  }).ConfigurePrimaryHttpMessageHandler((sp) => {
+}).ConfigurePrimaryHttpMessageHandler((sp) =>
+{
     var config = sp.GetRequiredService<IConfiguration>();
     var handler = new HttpClientHandler();
     var base64Cert = config["Vayapay:ClientCertificate:CertBase64Second"];

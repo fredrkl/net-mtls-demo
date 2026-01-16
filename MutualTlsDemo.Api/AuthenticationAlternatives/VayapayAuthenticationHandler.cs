@@ -9,22 +9,22 @@ public class VayapayAuthenticationHandler(IOptionsMonitor<VayapayAuthenticationS
 {
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()
     {
-      if (!Request.Headers.TryGetValue("X-API-KEY", out var key))
-        return Task.FromResult(AuthenticateResult.NoResult());
+        if (!Request.Headers.TryGetValue("X-API-KEY", out var key))
+            return Task.FromResult(AuthenticateResult.NoResult());
 
-      var providedKey = key.ToString();
-      if(string.IsNullOrWhiteSpace(providedKey))
-          return Task.FromResult(AuthenticateResult.Fail("No API Key"));
+        var providedKey = key.ToString();
+        if (string.IsNullOrWhiteSpace(providedKey))
+            return Task.FromResult(AuthenticateResult.Fail("No API Key"));
 
-      if( providedKey != Options.ApiKey)
-          return Task.FromResult(AuthenticateResult.Fail("Invalid API key"));
+        if (providedKey != Options.ApiKey)
+            return Task.FromResult(AuthenticateResult.Fail("Invalid API key"));
 
-      var claims = new[] { new Claim("client", "vayapay") };
-      var identity = new ClaimsIdentity(claims, Scheme.Name);
-      var principal = new ClaimsPrincipal(identity);
-      var ticket = new AuthenticationTicket(principal, Scheme.Name);
+        var claims = new[] { new Claim("client", "vayapay") };
+        var identity = new ClaimsIdentity(claims, Scheme.Name);
+        var principal = new ClaimsPrincipal(identity);
+        var ticket = new AuthenticationTicket(principal, Scheme.Name);
 
-      return Task.FromResult(AuthenticateResult.Success(ticket));
+        return Task.FromResult(AuthenticateResult.Success(ticket));
     }
 }
 
