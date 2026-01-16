@@ -3,3 +3,7 @@
 
 GET {{MutualTlsDemo.Api_HostAddress}}/weatherforecast/
 Accept: application/json
+X-API-KEY: {{ApiKey}}
+#
+#POST {{MutualTlsDemo.Api_HostAddress}}/weatherforecast
+#Accept: application/json

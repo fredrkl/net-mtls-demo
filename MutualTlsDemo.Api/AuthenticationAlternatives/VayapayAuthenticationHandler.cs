@@ -28,7 +28,7 @@ public class VayapayAuthenticationHandler(IOptionsMonitor<VayapayAuthenticationS
     }
 }
 
-public static class VayapayAuthenticationHandlerScheme
+public static class VayapayAuthenticationSchemeName
 {
     public const string AuthenticationScheme = "ApiKey";
 }

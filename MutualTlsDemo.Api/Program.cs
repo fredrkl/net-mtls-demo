@@ -1,7 +1,6 @@
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using Microsoft.AspNetCore.Authentication;
 using MutualTlsDemo.Api.AuthenticationAlternatives;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +10,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = VayapayAuthenticationHandlerScheme.AuthenticationScheme;})
-                .AddScheme<VayapayAuthenticationSchemeOptions, VayapayAuthenticationHandler>(VayapayAuthenticationHandlerScheme.AuthenticationScheme, x => { x.ApiKey = "supersecret"; });
+builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = VayapayAuthenticationSchemeName.AuthenticationScheme;})
+                .AddScheme<VayapayAuthenticationSchemeOptions, VayapayAuthenticationHandler>(VayapayAuthenticationSchemeName.AuthenticationScheme, x => { x.ApiKey = "supersecret"; });
 
 builder.Services.AddHttpClient<VayapayClient>((sp, client) => {
     var config = sp.GetRequiredService<IConfiguration>();
