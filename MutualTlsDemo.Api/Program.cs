@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using Microsoft.AspNetCore.Authentication;
-using MutualTlsDemo.Api.EndpointFilters;
+using MutualTlsDemo.Api.AuthenticationAlternatives;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,30 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-//Console.WriteLine("Certificate Base64 from Configuration:");
-//Console.WriteLine(builder.Configuration["Vayapay:ClientCertificate:CertBase64"]);
-//
-//// CERTIFICATE
-var b64 = builder.Configuration["Vayapay:ClientCertificate:CertBase64Second"];
-var bytes = Convert.FromBase64String(b64!);
-var text = Encoding.UTF8.GetString(bytes);
-
-Console.WriteLine(text.StartsWith("-----BEGIN CERTIFICATE-----")
-    ? "CertBase64 decodes to PEM ✅"
-    : "CertBase64 does NOT decode to PEM ❌");
-
-//// CERTIFICATE KEY
-var keyB64 = builder.Configuration["Vayapay:ClientCertificate:CertKeyBase64Second"];
-var keyText = Encoding.UTF8.GetString(Convert.FromBase64String(keyB64!));
-
-Console.WriteLine(keyText.StartsWith("-----BEGIN")
-    ? "KeyBase64 decodes to PEM ✅"
-    : "KeyBase64 does NOT decode to PEM ❌");
-
-//Console.WriteLine("Certificate KEY Base64 from Configuration:");
-//Console.WriteLine(builder.Configuration["Vayapay:ClientCertificate:CertKeyBase64"]);
-builder.Services.AddAuthentication("ApiKey")
-  .AddScheme<AuthenticationSchemeOptions, VayapayAuthenticationHandler>("ApiKey", _ => {  });
+builder.Services.AddAuthentication(options => { options.DefaultAuthenticateScheme = VayapayAuthenticationHandlerScheme.AuthenticationScheme;})
+                .AddScheme<VayapayAuthenticationSchemeOptions, VayapayAuthenticationHandler>(VayapayAuthenticationHandlerScheme.AuthenticationScheme, x => { x.ApiKey = "supersecret"; });
 
 builder.Services.AddHttpClient<VayapayClient>((sp, client) => {
     var config = sp.GetRequiredService<IConfiguration>();

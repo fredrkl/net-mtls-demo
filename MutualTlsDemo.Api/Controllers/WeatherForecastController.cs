@@ -1,5 +1,7 @@
+using System.Net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MutualTlsDemo.Api.AuthenticationAlternatives;
 
 namespace MutualTlsDemo.Api.Controllers;
 
@@ -20,7 +22,7 @@ public class WeatherForecastController : ControllerBase
   ];
 
   [HttpGet(Name = "GetWeatherForecast")]
-  [Authorize(AuthenticationSchemes = "ApiKey")]
+  [Authorize(AuthenticationSchemes = VayapayAuthenticationHandlerScheme.AuthenticationScheme)]
   public IEnumerable<WeatherForecast> Get()
   {
       return Enumerable.Range(1, 5).Select(index => new WeatherForecast
