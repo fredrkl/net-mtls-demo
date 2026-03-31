@@ -1,3 +1,8 @@
+# [v1.9.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.8.0...v1.9.0) (2026-03-31)
+
+## ✨ New Features
+- [`be78d2b`](https://github.com/fredrkl/net-mtls-demo/commit/be78d2b)  Endpoint filter demo
+
 # [v1.8.0](https://github.com/fredrkl/net-mtls-demo/compare/v1.7.0...v1.8.0) (2026-01-16)
 
 ## ✨ New Features
