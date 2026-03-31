@@ -1,4 +1,5 @@
 @MutualTlsDemo.Api_HostAddress = http://localhost:5171
+@Vayapay = https://api-gw.staging.vayapay.com
 @ApiKey = supersecret
 
 GET {{MutualTlsDemo.Api_HostAddress}}/weatherforecast/
@@ -7,3 +8,8 @@ X-API-KEY: {{ApiKey}}
 #
 #POST {{MutualTlsDemo.Api_HostAddress}}/weatherforecast
 #Accept: application/json
+#This is the way to change a terminals backoffice URL
+
+POST {{MutualTlsDemo.Api_HostAddress}}/
+Accept: application/json
+X-API-KEY: {{ApiKey}}

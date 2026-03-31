@@ -52,6 +52,12 @@ UseAuthorization
       VayapayAuthenticationHandler.HandleAuthenticateAsync()
 ```
 
+### IEndpointFilter Approach
+
+Gives me a lightweight and flexible way to implement custom authentication
+logic directly at the endpoint level without interfering with the overall
+authentication pipeline.
+
 ## Notes on `AddHttpClient<T>`
 
 In our Program.cs file, you may notice the following line of code:
